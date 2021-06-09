@@ -28,7 +28,7 @@ void setup() {
   Serial.begin(9600);
   SD.begin(ModSlct); // Iniciamos el módulo SD
   pinMode(ModSlct, OUTPUT); // Definimos el módulo SD como salida
-  dht.begin();  // Comenzamos el sensor DHT
+  dht.begin();  // Inicia el sensor DHT
 }
 
 void loop() {
@@ -61,20 +61,19 @@ void loop() {
     {
 
 
-      File dataFile = SD.open("DHT11.txt", FILE_WRITE); //Crea el archivo DHT11 o si ya existe escribe dentro de el (Podeis cambiarlo)
+      File dataFile = SD.open("DHT11.bin", FILE_WRITE); //Crea el archivo DHT11 o si ya existe escribe dentro de el
 
       if (dataFile)
       {
-        //Lo que viene a continuación es lo que aparecerá dentro de la tarjeta SD.
-        dataFile.print(se.nom2); dataFile.print(se.humedad); dataFile.println("%");
-        Serial.print(se.nom2); Serial.print(se.humedad); Serial.println ("%");
+        dataFile.print(se.nom2); dataFile.print(se.humedad); dataFile.println("%"); //es lo que aparecerá dentro de la tarjeta SD.
+        Serial.print(se.nom2); Serial.print(se.humedad); Serial.println ("%"); // puesto para que nos aparezca en el serial para hacer la demostración.
 
-        dataFile.print(se.nom1); dataFile.print(se.grados);  dataFile.println("°C");
-        Serial.print(se.nom1); Serial.print(se.grados); Serial.println ("°C");
-        dataFile.print (se.horas); dataFile.print(":");  dataFile.print (se.minutos); dataFile.print(":"); dataFile.print (se.segundos); dataFile.println("\n");
-        Serial.print (se.horas); Serial.print(":");  Serial.print (se.minutos); Serial.print(":"); Serial.println (se.segundos); Serial.print("\n");
-        // Lo que viene ahora lo he puesto para que nos aparezca en el serial para hacer la demostración.
-        Serial.println("Datos escritos"); Serial.println("Exitoso");
+        dataFile.print(se.nom1); dataFile.print(se.grados);  dataFile.println("°C"); //es lo que aparecerá dentro de la tarjeta SD.
+        Serial.print(se.nom1); Serial.print(se.grados); Serial.println ("°C"); // puesto para que nos aparezca en el serial para hacer la demostración.
+        dataFile.print (se.horas); dataFile.print(":");  dataFile.print (se.minutos); dataFile.print(":"); dataFile.print (se.segundos); dataFile.println("\n"); //es lo que aparecerá dentro de la tarjeta SD.
+        Serial.print (se.horas); Serial.print(":");  Serial.print (se.minutos); Serial.print(":"); Serial.println (se.segundos); Serial.print("\n"); // puesto para que nos aparezca en el serial para hacer la demostración.
+        
+        Serial.println("Datos escritos"); Serial.println("Exitoso"); // puesto para que nos aparezca en el serial para hacer la demostración.
 
 
 
